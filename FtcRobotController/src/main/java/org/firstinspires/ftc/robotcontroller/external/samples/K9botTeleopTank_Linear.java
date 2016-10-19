@@ -59,7 +59,7 @@ import com.qualcomm.robotcore.util.Range;
 public class K9botTeleopTank_Linear extends LinearOpMode {
 
     /* Declare OpMode members. */
-    HardwareK9bot   robot           = new HardwareK9bot();              // Use a K9'shardware yah
+    HardwareK9bot   robot           = new HardwareK9bot();              // Use a K9'shardware wesket
     double          armPosition     = robot.ARM_HOME;                   // Servo safe position
     double          clawPosition    = robot.CLAW_HOME;                  // Servo safe position
     final double    CLAW_SPEED      = 0.01 ;                            // sets rate to move servo
