@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.robotcontroller.external.samples;
+package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -6,28 +6,15 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 /**
- * This is NOT an opmode.
- *
- * This class can be used to define all the specific hardware for a single robot.
- * In this case that robot is a K9 robot.
- *
- * This hardware class assumes the following device names have been configured on the robot:
- * Note:  All names are lower case and some have single spaces between words.
- *
- * Motor channel:  Left  drive motor:        "left motor"
- * Motor channel:  Right drive motor:        "right motor"
- * Servo channel:  Servo to raise/lower arm: "arm"
- * Servo channel:  Servo to open/close claw: "claw"
- *
- * Note: the configuration of the servos is such that:
- *   As the arm servo approaches 0, the arm position moves up (away from the floor).
- *   As the claw servo approaches 0, the claw opens up (drops the game element).
+ * Created by Robotics on 10/21/2016.
  */
-public class HardwareK9bot
-{
+
+public class RobotHardware{
     /* Public OpMode members. */
-    public DcMotor  leftMotor;
-    public DcMotor  rightMotor;
+    public DcMotor  frontLeftMotor;
+    public DcMotor  frontRightMotor;
+    public DcMotor  backLeftMotor;
+    public DcMotor  backRightMotor;
     public Servo    arm;
     public Servo    claw;
 
@@ -43,7 +30,7 @@ public class HardwareK9bot
     private ElapsedTime period  = new ElapsedTime();
 
     /* Constructor */
-    public HardwareK9bot() {
+    public RobotHardware() {
     }
 
     /* Initialize standard Hardware interfaces */
@@ -52,18 +39,22 @@ public class HardwareK9bot
         hwMap = ahwMap;
 
         // Define and Initialize Motors
-        leftMotor   = hwMap.dcMotor.get("left motor");
-        rightMotor  = hwMap.dcMotor.get("right motor");
-        leftMotor.setDirection(DcMotor.Direction.REVERSE);
+        frontLeftMotor   = hwMap.dcMotor.get("front left");
+        frontRightMotor  = hwMap.dcMotor.get("front right");
+        backLeftMotor = hwMap.dcMotor.get("back left");
+        backRightMotor = hwMap.dcMotor.get("back right");
+
+
+        frontLeftMotor.setDirection(DcMotor.Direction.REVERSE);
 
         // Set all motors to zero power
-        leftMotor.setPower(0);
-        rightMotor.setPower(0);
+        frontLeftMotor.setPower(0);
+        frontRightMotor.setPower(0);
 
         // Set all motors to run without encoders.
         // May want to use RUN_USING_ENCODERS if encoders are installed.
-        leftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        rightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        frontLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        frontRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         // Define and initialize ALL installed servos.
         arm = hwMap.servo.get("arm");
@@ -93,3 +84,4 @@ public class HardwareK9bot
         period.reset();
     }
 }
+

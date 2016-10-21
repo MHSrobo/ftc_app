@@ -36,6 +36,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpModeManager;
 import com.qualcomm.robotcore.eventloop.opmode.OpModeRegister;
 import com.qualcomm.robotcore.eventloop.opmode.AnnotatedOpModeRegistrar;
 import org.firstinspires.ftc.robotcontroller.external.samples.ConceptNullOp;
+import org.firstinspires.ftc.robotcontroller.external.samples.SensorMRColor;
 
 /**
  * {@link FtcOpModeRegister} is responsible for registering opmodes for use in an FTC game.
@@ -73,6 +74,7 @@ public class FtcOpModeRegister implements OpModeRegister {
          * Register OpModes that use the annotation-based registration mechanism.
          */
         AnnotatedOpModeRegistrar.register(manager);
+        manager.register("MR Color Sensor", SensorMRColor.class);
 
         /**
          * Any manual OpMode class registrations should go here.
