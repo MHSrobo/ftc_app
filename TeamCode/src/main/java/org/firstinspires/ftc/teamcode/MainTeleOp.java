@@ -5,7 +5,6 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
 
-import org.firstinspires.ftc.teamcode.RobotHardware;
 
 /**
  * Created by Robotics on 10/21/2016.
@@ -25,6 +24,7 @@ public class MainTeleOp extends LinearOpMode{
     public void runOpMode() throws InterruptedException {
         double left;
         double right;
+        boolean harvesting = false;
 
         /* Initialize the hardware variables.
          * The init() method of the hardware class does all the work here
@@ -44,8 +44,34 @@ public class MainTeleOp extends LinearOpMode{
             // Run wheels in tank mode (note: The joystick goes negative when pushed forwards, so negate it)
             left = -gamepad1.left_stick_y;
             right = -gamepad1.right_stick_y;
-            robot.leftMotor.setPower(left);
-            robot.rightMotor.setPower(right);
+            robot.frontLeftMotor.setPower(left);
+            robot.backLeftMotor.setPower(left);
+            robot.frontRightMotor.setPower(right);
+            robot.backRightMotor.setPower(right);
+
+            //Gunner's A button toggles the harvester
+            if(gamepad2.a){
+                if(!harvesting){
+                    robot.harvester.setPower(1);
+                    harvesting = true;
+                }
+                else if(harvesting){
+                    robot.harvester.setPower(0);
+                    harvesting = false;
+                }
+            }
+
+
+            //Holding down X button for gunner will move the launcher motor
+            if(gamepad2.x){
+                robot.launcher.setPower(0.5);
+            }
+
+            //Holding down B button for gunner will rewind launcher motor
+            else if(gamepad2.b){
+                robot.harvester.setPower(-0.5);
+            }
+
 
             // Use gamepad Y & A raise and lower the arm
             if (gamepad1.a)
