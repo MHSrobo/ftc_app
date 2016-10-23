@@ -15,6 +15,10 @@ public class RobotHardware{
     public DcMotor  frontRightMotor;
     public DcMotor  backLeftMotor;
     public DcMotor  backRightMotor;
+
+    public DcMotor  harvester;
+    public DcMotor  launcher;
+
     public Servo    arm;
     public Servo    claw;
 
@@ -44,12 +48,19 @@ public class RobotHardware{
         backLeftMotor = hwMap.dcMotor.get("back left");
         backRightMotor = hwMap.dcMotor.get("back right");
 
+        harvester = hwMap.dcMotor.get("harvester");
+        launcher = hwMap.dcMotor.get("launcher");
 
         frontLeftMotor.setDirection(DcMotor.Direction.REVERSE);
 
         // Set all motors to zero power
         frontLeftMotor.setPower(0);
         frontRightMotor.setPower(0);
+        backLeftMotor.setPower(0);
+        backRightMotor.setPower(0);
+
+        harvester.setPower(0);
+        launcher.setPower(0);
 
         // Set all motors to run without encoders.
         // May want to use RUN_USING_ENCODERS if encoders are installed.
