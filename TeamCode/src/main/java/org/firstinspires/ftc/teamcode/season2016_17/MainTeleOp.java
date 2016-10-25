@@ -1,8 +1,6 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.season2016_17;
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
 
 
@@ -14,7 +12,12 @@ public class MainTeleOp extends LinearOpMode{
 
     /* Declare OpMode members. */
 
-    RobotHardware   robot           = new RobotHardware();              // Use a K9'shardware Beanwesely
+    RobotHardware robot;              // Use a K9'shardware Beanwesely
+    TeleOpDriveTrain driveTrain;
+    Harvester harvester;
+    Launcher launcher;
+
+
     double          armPosition     = robot.ARM_HOME;                   // Servo safe position
     double          clawPosition    = robot.CLAW_HOME;                  // Servo safe position
     final double    CLAW_SPEED      = 0.01 ;                            // sets rate to move servo
@@ -22,8 +25,6 @@ public class MainTeleOp extends LinearOpMode{
 
     @Override
     public void runOpMode() throws InterruptedException {
-        double left;
-        double right;
         boolean harvesting = false;
 
         /* Initialize the hardware variables.
@@ -35,42 +36,20 @@ public class MainTeleOp extends LinearOpMode{
         telemetry.addData("Say", "Hello Driver");
         telemetry.update();
 
-        // Wait for the game to start (driver presses PLAY)
+        // Wait unitl driver presses PLAY
         waitForStart();
 
-        // run until the end of the match (driver presses STOP)
+        // run until driver presses STOP
         while (opModeIsActive()) {
 
-            // Run wheels in tank mode (note: The joystick goes negative when pushed forwards, so negate it)
-            left = -gamepad1.left_stick_y;
-            right = -gamepad1.right_stick_y;
-            robot.frontLeftMotor.setPower(left);
-            robot.backLeftMotor.setPower(left);
-            robot.frontRightMotor.setPower(right);
-            robot.backRightMotor.setPower(right);
+            //Call the drive train method
+            driveTrain.tankDriveControl(-gamepad1.left_stick_y,-gamepad1.right_stick_y);
 
             //Gunner's A button toggles the harvester
-            if(gamepad2.a){
-                if(!harvesting){
-                    robot.harvester.setPower(1);
-                    harvesting = true;
-                }
-                else if(harvesting){
-                    robot.harvester.setPower(0);
-                    harvesting = false;
-                }
-            }
-
+            harvester.harvesterControls(gamepad2.a);
 
             //Holding down X button for gunner will move the launcher motor
-            if(gamepad2.x){
-                robot.launcher.setPower(0.5);
-            }
-
-            //Holding down B button for gunner will rewind launcher motor
-            else if(gamepad2.b){
-                robot.harvester.setPower(-0.5);
-            }
+            launcher.launcherControls(gamepad2.x, gamepad2.b);
 
 
             // Use gamepad Y & A raise and lower the arm
@@ -94,8 +73,6 @@ public class MainTeleOp extends LinearOpMode{
             // Send telemetry message to signify robot running;
             telemetry.addData("arm",   "%.2f", armPosition);
             telemetry.addData("claw",  "%.2f", clawPosition);
-            telemetry.addData("left",  "%.2f", left);
-            telemetry.addData("right", "%.2f", right);
             telemetry.update();
 
             // Pause for metronome tick.  40 mS each cycle = update 25 times a second.
