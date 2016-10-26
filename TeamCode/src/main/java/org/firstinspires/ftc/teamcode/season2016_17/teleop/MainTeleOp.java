@@ -1,7 +1,9 @@
-package org.firstinspires.ftc.teamcode.season2016_17;
+package org.firstinspires.ftc.teamcode.season2016_17.teleop;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.Range;
+
+import org.firstinspires.ftc.teamcode.season2016_17.RobotHardware;
 
 
 /**
@@ -13,7 +15,7 @@ public class MainTeleOp extends LinearOpMode{
     /* Declare OpMode members. */
 
     RobotHardware robot;              // Use a K9'shardware Beanwesely
-    TeleOpDriveTrain driveTrain;
+    DriveTrain driveTrain;
     Harvester harvester;
     Launcher launcher;
 

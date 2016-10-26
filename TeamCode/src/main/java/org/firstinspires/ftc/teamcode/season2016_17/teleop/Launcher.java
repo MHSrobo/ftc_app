@@ -1,4 +1,6 @@
-package org.firstinspires.ftc.teamcode.season2016_17;
+package org.firstinspires.ftc.teamcode.season2016_17.teleop;
+
+import org.firstinspires.ftc.teamcode.season2016_17.RobotHardware;
 
 /**
  * Created by Ben on 10/24/2016.
