@@ -15,6 +15,9 @@ public class RobotHardware{
     public DcMotor  frontRightMotor;
     public DcMotor  backLeftMotor;
     public DcMotor  backRightMotor;
+    public DcMotor  harvester;
+    public DcMotor  launcher;
+
     public Servo    arm;
     public Servo    claw;
 
@@ -43,6 +46,9 @@ public class RobotHardware{
         frontRightMotor  = hwMap.dcMotor.get("front right");
         backLeftMotor = hwMap.dcMotor.get("back left");
         backRightMotor = hwMap.dcMotor.get("back right");
+
+        harvester = hwMap.dcMotor.get("harvester");
+        launcher = hwMap.dcMotor.get("launcher");
 
 
         frontLeftMotor.setDirection(DcMotor.Direction.REVERSE);
