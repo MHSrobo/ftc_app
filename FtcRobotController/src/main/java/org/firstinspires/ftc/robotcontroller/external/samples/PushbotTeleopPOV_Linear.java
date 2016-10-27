@@ -89,7 +89,7 @@ public class PushbotTeleopPOV_Linear extends LinearOpMode {
             // Run wheels in POV mode (note: The joystick goes negative when pushed forwards, so negate it)
             // In this mode the Left stick moves the robot fwd and back, the Right stick turns left and right.
             left  = -gamepad1.left_stick_y + gamepad1.right_stick_x;
-            right = -gamepad1.left_stick_y - gamepad1.right_stick_x;
+            right = -gamepad1.left_stick_y - gamepad1.right_stick_x;z
 
             // Normalize the values so neither exceed +/- 1.0
             max = Math.max(Math.abs(left), Math.abs(right));
