@@ -18,7 +18,6 @@ public class AutonomousRed extends LinearOpMode {
     Harvester harvester;
     Launcher launcher;
 
-    
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -40,13 +39,12 @@ public class AutonomousRed extends LinearOpMode {
 
         while (opModeIsActive()) {
 
-            if (this.time < 5){
+            if (this.time < 5) {
 
-                driveTrain.tankDriveControl(1,1);
+                driveTrain.tankDriveControl(1, 1);
 
-            }
-            else {
-                driveTrain.tankDriveControl(0,0);
+            } else {
+                driveTrain.tankDriveControl(0, 0);
             }
 
 
@@ -55,7 +53,6 @@ public class AutonomousRed extends LinearOpMode {
             idle(); // Always call idle() at the bottom of your while(opModeIsActive()) loop
 
 
-
-
         }
+    }
 }
