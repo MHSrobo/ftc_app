@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.season2016_17.teleop;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.Range;
 
+
 import org.firstinspires.ftc.teamcode.season2016_17.RobotHardware;
 
 
@@ -27,7 +28,6 @@ public class MainTeleOp extends LinearOpMode{
 
     @Override
     public void runOpMode() throws InterruptedException {
-        boolean harvesting = false;
 
         /* Initialize the hardware variables.
          * The init() method of the hardware class does all the work here
