@@ -39,8 +39,9 @@ import com.qualcomm.robotcore.eventloop.opmode.AnnotatedOpModeRegistrar;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.robotcontroller.external.samples.ConceptNullOp;
-import org.firstinspires.ftc.robotcontroller.external.samples.MainTeleOp;
-import org.firstinspires.ftc.robotcontroller.external.samples.SensorMRColor;
+import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.MainTeleOp;
+import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.SensorMRColor;
+import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.AutonomousWait15Sec;
 
 /**
  * {@link FtcOpModeRegister} is responsible for registering opmodes for use in an FTC game.
@@ -83,8 +84,9 @@ public class FtcOpModeRegister implements OpModeRegister {
          * Any manual OpMode class registrations should go here.
          */
         manager.register("MainTeleOp", MainTeleOp.class);
-        manager.register("Autonomous", org.firstinspires.ftc.robotcontroller.external.samples.Autonomous.class);
-        manager.register("Autonomous (Wait 15 secs)", org.firstinspires.ftc.robotcontroller.external.samples.AutonomousWait15Sec.class);
+        manager.register("Autonomous", org.firstinspires.ftc.robotcontroller.external.samples.madrobots.Autonomous.class);
+        manager.register("Autonomous (Wait 15 secs)", AutonomousWait15Sec.class);
+        manager.register("Sensor: MR Color", SensorMRColor.class);
 
 
 

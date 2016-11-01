@@ -1,9 +1,12 @@
-package org.firstinspires.ftc.robotcontroller.external.samples;
+package org.firstinspires.ftc.robotcontroller.external.samples.madrobots;
 
+import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
+
+import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.util.Logger;
 
 /**
  * Created by Robotics on 10/21/2016.
@@ -18,6 +21,8 @@ public class RobotHardware {
     public DcMotor  backRightMotor;
     public DcMotor  harvester;
     public DcMotor  launcher;
+
+    public ColorSensor colorsensor;
 
     //public Servo    arm;
     //public Servo    claw;
@@ -50,6 +55,8 @@ public class RobotHardware {
 
         harvester = hwMap.dcMotor.get("harvester");
         launcher = hwMap.dcMotor.get("launcher");
+
+        colorsensor = hwMap.colorSensor.get("color sensor");
 
         frontLeftMotor.setDirection(DcMotor.Direction.REVERSE);
 

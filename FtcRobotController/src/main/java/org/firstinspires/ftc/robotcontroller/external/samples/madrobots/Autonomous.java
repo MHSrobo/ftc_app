@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.robotcontroller.external.samples;
+package org.firstinspires.ftc.robotcontroller.external.samples.madrobots;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -6,20 +6,19 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
 
 
-
 /**
  * Created by Robotics on 10/21/2016.
  */
-@TeleOp(name = "MainTeleOp", group = "TeleOps")
+@TeleOp(name = "Autonomous", group = "TeleOps")
 @Disabled
-public class MainTeleOp extends LinearOpMode{
+public class Autonomous extends LinearOpMode{
 
     /* Declare OpMode members. */
 
     RobotHardware robot = new RobotHardware();              // Use a K9'shardware Beanwesely
 //    DriveTrain driveTrain = new DriveTrain();
 //    Harvester harvester = new Harvester();
-    Launcher launcher = new Launcher();
+//    Launcher launcher = new Launcher();
 
 
     //double          armPosition     = robot.ARM_HOME;                   // Servo safe position
@@ -41,8 +40,12 @@ public class MainTeleOp extends LinearOpMode{
         // run until driver presses STOP
         while (opModeIsActive()) {
 
-            double left = -gamepad1.left_stick_y;
-            double right = -gamepad1.right_stick_y;
+            double left = 1;
+            double right = 1;
+
+            if(time > 2000)
+                left = right = 0;
+
             left = Range.clip(left, -1, 1);
             right = Range.clip(right, -1, 1);
             robot.frontRightMotor.setPower(right);
