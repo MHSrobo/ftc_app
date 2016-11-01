@@ -32,10 +32,14 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
 package org.firstinspires.ftc.robotcontroller.internal;
 
 import com.google.blocks.ftcrobotcontroller.runtime.BlocksOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpModeManager;
 import com.qualcomm.robotcore.eventloop.opmode.OpModeRegister;
 import com.qualcomm.robotcore.eventloop.opmode.AnnotatedOpModeRegistrar;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
 import org.firstinspires.ftc.robotcontroller.external.samples.ConceptNullOp;
+import org.firstinspires.ftc.robotcontroller.external.samples.MainTeleOp;
 import org.firstinspires.ftc.robotcontroller.external.samples.SensorMRColor;
 
 /**
@@ -60,8 +64,8 @@ public class FtcOpModeRegister implements OpModeRegister {
      *
      * @param manager the object which contains methods for carrying out OpMode registrations
      *
-     * @see com.qualcomm.robotcore.eventloop.opmode.TeleOp
-     * @see com.qualcomm.robotcore.eventloop.opmode.Autonomous
+     * @see TeleOp
+     * @see Autonomous
      */
     public void register(OpModeManager manager) {
 
@@ -75,9 +79,14 @@ public class FtcOpModeRegister implements OpModeRegister {
          */
         AnnotatedOpModeRegistrar.register(manager);
         manager.register("MR Color Sensor", SensorMRColor.class);
-
         /**
          * Any manual OpMode class registrations should go here.
          */
+        manager.register("MainTeleOp", MainTeleOp.class);
+        manager.register("Autonomous", org.firstinspires.ftc.robotcontroller.external.samples.Autonomous.class);
+        manager.register("Autonomous (Wait 15 secs)", org.firstinspires.ftc.robotcontroller.external.samples.AutonomousWait15Sec.class);
+
+
+
     }
 }

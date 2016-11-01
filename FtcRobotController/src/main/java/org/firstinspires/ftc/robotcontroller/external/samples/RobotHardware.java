@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.season2016_17;
+package org.firstinspires.ftc.robotcontroller.external.samples;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -9,7 +9,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Created by Robotics on 10/21/2016.
  */
 
-public class RobotHardware{
+public class RobotHardware {
 
     /* Public OpMode members. */
     public DcMotor  frontLeftMotor;
@@ -19,15 +19,15 @@ public class RobotHardware{
     public DcMotor  harvester;
     public DcMotor  launcher;
 
-    public Servo    arm;
-    public Servo    claw;
+    //public Servo    arm;
+    //public Servo    claw;
 
-    public final static double ARM_HOME = 0.2;
-    public final static double CLAW_HOME = 0.2;
-    public final static double ARM_MIN_RANGE  = 0.20;
+    //public final static double ARM_HOME = 0.2;
+    //public final static double CLAW_HOME = 0.2;
+    /*public final static double ARM_MIN_RANGE  = 0.20;
     public final static double ARM_MAX_RANGE  = 0.90;
     public final static double CLAW_MIN_RANGE  = 0.20;
-    public final static double CLAW_MAX_RANGE  = 0.7;
+    public final static double CLAW_MAX_RANGE  = 0.7;*/
 
     /* Local OpMode members. */
     HardwareMap hwMap;
@@ -64,16 +64,16 @@ public class RobotHardware{
 
         // Set all motors to run without encoders.
         // May want to use RUN_USING_ENCODERS if encoders are installed.
-        frontLeftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        frontRightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        backLeftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        backRightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        frontLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        frontRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        backLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        backRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         // Define and initialize ALL installed servos.
-        arm = hwMap.servo.get("arm");
+        /*arm = hwMap.servo.get("arm");
         claw = hwMap.servo.get("claw");
         arm.setPosition(ARM_HOME);
-        claw.setPosition(CLAW_HOME);
+        claw.setPosition(CLAW_HOME);*/
     }
 
     /***

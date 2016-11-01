@@ -1,8 +1,9 @@
 package org.firstinspires.ftc.teamcode.season2016_17.teleop;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
-
 
 import org.firstinspires.ftc.teamcode.season2016_17.RobotHardware;
 
@@ -10,7 +11,8 @@ import org.firstinspires.ftc.teamcode.season2016_17.RobotHardware;
 /**
  * Created by Robotics on 10/21/2016.
  */
-
+@TeleOp(name = "MainTeleOp", group = "TeleOps")
+@Disabled
 public class MainTeleOp extends LinearOpMode{
 
     /* Declare OpMode members. */
@@ -19,6 +21,7 @@ public class MainTeleOp extends LinearOpMode{
     DriveTrain driveTrain;
     Harvester harvester;
     Launcher launcher;
+    MecanumDrive mecanumDrive;
 
 
     double          armPosition     = robot.ARM_HOME;                   // Servo safe position
@@ -45,7 +48,10 @@ public class MainTeleOp extends LinearOpMode{
         while (opModeIsActive()) {
 
             //Call the drive train method
+            //Gamepad Joystick goes negative when pushed forward: negate it with -
             driveTrain.tankDriveControl(-gamepad1.left_stick_y,-gamepad1.right_stick_y);
+            //mecanumDrive.mecDriveJoystick(-gamepad1.left_stick_x, -gamepad1.left_stick_y);
+
 
             //Gunner's A button toggles the harvester
             harvester.harvesterControls(gamepad2.a);

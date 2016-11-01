@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.teamcode.season2016_17.teleop;
 
+import com.qualcomm.robotcore.hardware.Gamepad;
+
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.season2016_17.RobotHardware;
 
@@ -10,6 +12,7 @@ public class MecanumDrive {
 
     RobotHardware robot;
     Telemetry telemetry;
+
 
     public void mecDriveJoystick(double joystickX, double joystickY) {
         mecDriveAngle(Math.atan2(joystickY,joystickX), Math.sqrt(joystickX*joystickX+joystickY*joystickY));
