@@ -15,14 +15,20 @@ public class DriveTrain extends MadDevice {
         super(robot, gamepad);
     }
 
-    public void update() {
+    public void gamepadMove() {
         double left = -gamepad.left_stick_y;
         double right = -gamepad.right_stick_y;
+        move(left, right);
+    }
+
+    public void move(double left, double right){
         left = Range.clip(left, -1, 1);
         right = Range.clip(right, -1, 1);
         robot.frontRightMotor.setPower(right);
         robot.frontLeftMotor.setPower(left);
         robot.backRightMotor.setPower(right);
         robot.backLeftMotor.setPower(left);
+
+
     }
 }

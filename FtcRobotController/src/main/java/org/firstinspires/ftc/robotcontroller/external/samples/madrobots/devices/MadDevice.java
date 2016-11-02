@@ -15,6 +15,4 @@ public abstract class MadDevice {
         this.robot = robot;
         this.gamepad = gamepad;
     }
-
-    public abstract void update();
 }
