@@ -11,11 +11,11 @@ import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.RobotHar
  */
 
 public class DriveTrain extends MadDevice {
-    public DriveTrain(RobotHardware robot, Gamepad gamepad) {
-        super(robot, gamepad);
+    public DriveTrain(RobotHardware robot) {
+        super(robot);
     }
 
-    public void gamepadMove() {
+    public void gamepadMove(Gamepad gamepad) {
         double left = -gamepad.left_stick_y;
         double right = -gamepad.right_stick_y;
         move(left, right);
@@ -28,7 +28,5 @@ public class DriveTrain extends MadDevice {
         robot.frontLeftMotor.setPower(left);
         robot.backRightMotor.setPower(right);
         robot.backLeftMotor.setPower(left);
-
-
     }
 }

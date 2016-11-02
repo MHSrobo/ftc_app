@@ -11,16 +11,28 @@ import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.RobotHar
 
 public class Harvester extends MadDevice  {
 
-    public Harvester(RobotHardware robot, Gamepad gamepad) {
-        super(robot, gamepad);
+    public Harvester(RobotHardware robot) {
+        super(robot);
     }
 
-    public void update() {
-        float harvestpower = 0;
+    /**
+     * Control with RB and LB using a gamepad.
+     * @param gamepad
+     */
+    public void gamepadControl(Gamepad gamepad) {
+        double harvestPower = 0;
         if (gamepad.right_bumper)
-            harvestpower += 1;
+            harvestPower += 1;
         if(gamepad.left_bumper)
-            harvestpower -= 1;
-        robot.harvester.setPower(harvestpower);
+            harvestPower -= 1;
+        power(harvestPower);
+    }
+
+    /**
+     * Set the power of the harvester.
+     * @param power
+     */
+    public void power(double power) {
+        robot.harvester.setPower(power);
     }
 }

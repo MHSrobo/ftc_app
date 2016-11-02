@@ -11,15 +11,16 @@ import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.RobotHar
  * Created by Robotics on 11/1/2016.
  */
 public class ColorSensor extends MadDevice {
-    public ColorSensor(RobotHardware robot, Gamepad gamepad) {
-        super(robot, gamepad);
+
+    public ColorSensor(RobotHardware robot) {
+        super(robot);
         robot.colorsensor.enableLed(false); // DISABLE LED FOR BETTER COLOR DETECTION
     }
 
-    public void update() {
-
-    }
-
+    /**
+     * Return hue, saturation and value.
+     * @return
+     */
     public float[] getHSV() {
         // hsvValues is an array that will hold the hue, saturation, and value information.
         float hsvValues[] = {0F,0F,0F};
