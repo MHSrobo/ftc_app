@@ -46,7 +46,7 @@ public class MainTeleOp extends LinearOpMode{
 
         // run until driver presses STOP
         while (opModeIsActive()) {
-            drive.update();
+            drive.gamepadMove();
             harvester.update();
             launcher.update();
 

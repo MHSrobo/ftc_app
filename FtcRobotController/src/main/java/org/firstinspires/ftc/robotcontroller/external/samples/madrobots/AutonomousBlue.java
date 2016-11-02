@@ -3,6 +3,7 @@ package org.firstinspires.ftc.robotcontroller.external.samples.madrobots;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Hardware;
 import com.qualcomm.robotcore.util.Range;
 
@@ -26,6 +27,8 @@ public class AutonomousBlue extends LinearOpMode{
     Launcher launcher;
     DriveTrain drive;
 
+    private ElapsedTime runtime = new ElapsedTime();
+
     @Override
     public void runOpMode() throws InterruptedException {
 
@@ -44,8 +47,6 @@ public class AutonomousBlue extends LinearOpMode{
         while (opModeIsActive()) {
 
 
-
-            drive.move()
             harvester.update();
             launcher.update();
 
