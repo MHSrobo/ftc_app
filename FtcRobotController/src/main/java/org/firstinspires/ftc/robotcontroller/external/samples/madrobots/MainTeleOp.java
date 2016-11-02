@@ -37,18 +37,22 @@ public class MainTeleOp extends LinearOpMode{
         Logger.init(telemetry);
 
         // Initialize madison proprietary abstractions
-        harvester = new Harvester(robot, gamepad1);
-        launcher = new Launcher(robot, gamepad1);
-        drive = new DriveTrain(robot, gamepad1);
+        harvester = new Harvester(robot);
+        launcher = new Launcher(robot);
+        drive = new DriveTrain(robot);
+
+        drive.move(0, 1);
 
         // Wait unit driver presses PLAY
         waitForStart();
 
         // run until driver presses STOP
         while (opModeIsActive()) {
-            drive.gamepadMove();
-            harvester.update();
-            launcher.update();
+
+            drive.gamepadMove(gamepad1);
+            harvester.gamepadControl(gamepad1);
+            launcher.gamepadControl(gamepad1);
+
 
             // Pause for metronome tick.  40 mS each cycle = update 25 times a second.
             robot.waitForTick(40);

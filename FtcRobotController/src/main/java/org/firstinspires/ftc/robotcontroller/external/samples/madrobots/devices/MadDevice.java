@@ -1,7 +1,5 @@
 package org.firstinspires.ftc.robotcontroller.external.samples.madrobots.devices;
 
-import com.qualcomm.robotcore.hardware.Gamepad;
-
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.RobotHardware;
 
 /**
@@ -9,10 +7,8 @@ import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.RobotHar
  */
 public abstract class MadDevice {
     public final RobotHardware robot;
-    public final Gamepad gamepad;
 
-    public MadDevice(RobotHardware robot, Gamepad gamepad) {
+    public MadDevice(RobotHardware robot) {
         this.robot = robot;
-        this.gamepad = gamepad;
     }
 }

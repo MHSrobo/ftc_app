@@ -10,14 +10,26 @@ import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.RobotHar
 
 public class Launcher extends MadDevice {
 
-    public Launcher(RobotHardware robot, Gamepad gamepad) {
-        super(robot, gamepad);
+    public Launcher(RobotHardware robot) {
+        super(robot);
     }
 
-    public void update() {
-        float power = 0;
+    /**
+     * Control with RB and LB using a gamepad.
+     * @param gamepad
+     */
+    public void gamepadControl(Gamepad gamepad) {
+        double launchPower = 0;
         if(gamepad.x)
-            power -= 1;
-        robot.launcher.setPower(power);
+            launchPower -= 1;
+        power(launchPower);
+    }
+
+    /**
+     * Sets the power of the launcher motor (ALWAYS NEGATIVE).
+     * @param power
+     */
+    public void power(double power) {
+        robot.launcher.setPower(-Math.abs(power));
     }
 }
