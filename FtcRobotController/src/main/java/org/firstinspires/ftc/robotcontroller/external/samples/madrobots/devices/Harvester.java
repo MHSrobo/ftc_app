@@ -1,9 +1,8 @@
 package org.firstinspires.ftc.robotcontroller.external.samples.madrobots.devices;
 
-
 import com.qualcomm.robotcore.hardware.Gamepad;
-
-import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.RobotHardware;
+import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.hardware.TeleOpHardware;
+import com.qualcomm.robotcore.util.Range;
 
 /**
  * Created by Ben on 10/24/2016.
@@ -11,7 +10,7 @@ import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.RobotHar
 
 public class Harvester extends MadDevice  {
 
-    public Harvester(RobotHardware robot) {
+    public Harvester(TeleOpHardware robot) {
         super(robot);
     }
 
@@ -21,8 +20,9 @@ public class Harvester extends MadDevice  {
      */
     public void gamepadControl(Gamepad gamepad) {
         double harvestPower = 0;
-        if (gamepad.right_bumper)
+        if (gamepad.right_bumper){
             harvestPower += 1;
+        }
         if(gamepad.left_bumper)
             harvestPower -= 1;
         power(harvestPower);
@@ -33,6 +33,7 @@ public class Harvester extends MadDevice  {
      * @param power
      */
     public void power(double power) {
+        power = Range.clip(power, -1,1);
         robot.harvester.setPower(power);
     }
 }

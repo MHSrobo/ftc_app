@@ -2,7 +2,8 @@ package org.firstinspires.ftc.robotcontroller.external.samples.madrobots.devices
 
 import com.qualcomm.robotcore.hardware.Gamepad;
 
-import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.RobotHardware;
+import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.hardware.TeleOpHardware;
+import com.qualcomm.robotcore.util.Range;
 
 /**
  * Created by Ben on 10/24/2016.
@@ -10,7 +11,7 @@ import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.RobotHar
 
 public class Launcher extends MadDevice {
 
-    public Launcher(RobotHardware robot) {
+    public Launcher(TeleOpHardware robot) {
         super(robot);
     }
 
@@ -30,6 +31,7 @@ public class Launcher extends MadDevice {
      * @param power
      */
     public void power(double power) {
+        power = Range.clip(power, -1,1);
         robot.launcher.setPower(-Math.abs(power));
     }
 }

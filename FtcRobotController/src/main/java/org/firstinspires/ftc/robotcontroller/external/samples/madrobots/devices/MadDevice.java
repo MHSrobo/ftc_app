@@ -1,14 +1,14 @@
 package org.firstinspires.ftc.robotcontroller.external.samples.madrobots.devices;
 
-import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.RobotHardware;
+import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.hardware.TeleOpHardware;
 
 /**
  * Created by Robotics on 11/1/2016.
  */
 public abstract class MadDevice {
-    public final RobotHardware robot;
+    public final TeleOpHardware robot;
 
-    public MadDevice(RobotHardware robot) {
+    public MadDevice(TeleOpHardware robot) {
         this.robot = robot;
     }
 }

@@ -3,12 +3,11 @@ package org.firstinspires.ftc.robotcontroller.external.samples.madrobots;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.util.Hardware;
-import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.devices.DriveTrain;
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.devices.Harvester;
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.devices.Launcher;
+import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.hardware.TeleOpHardware;
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.util.Logger;
 
 
@@ -21,7 +20,7 @@ public class AutonomousRed extends LinearOpMode{
 
     /* Declare OpMode members. */
 
-    RobotHardware robot = new RobotHardware();
+    TeleOpHardware robot = new TeleOpHardware();
     Harvester harvester;
     Launcher launcher;
     DriveTrain drive;
@@ -37,18 +36,18 @@ public class AutonomousRed extends LinearOpMode{
         Logger.init(telemetry);
 
         // Initialize madison proprietary abstractions
-        harvester = new Harvester(robot, gamepad1);
-        launcher = new Launcher(robot, gamepad1);
-        drive = new DriveTrain(robot, gamepad1);
+        harvester = new Harvester(robot);
+        launcher = new Launcher(robot);
+        drive = new DriveTrain(robot);
 
         // Wait unit driver presses PLAY
         waitForStart();
 
         // run until driver presses STOP
         while (opModeIsActive()) {
-            drive.update();
-            harvester.update();
-            launcher.update();
+            drive.move(1,1);
+            harvester.power(1);
+            launcher.power(1);
 
             // Pause for metronome tick.  40 mS each cycle = update 25 times a second.
             robot.waitForTick(40);

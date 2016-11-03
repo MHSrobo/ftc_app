@@ -40,6 +40,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.robotcontroller.external.samples.ConceptNullOp;
 import org.firstinspires.ftc.robotcontroller.external.samples.PushbotAutoDriveByEncoder_Linear;
+import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.EncoderTest;
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.MainTeleOp;
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.SensorMRColor;
 
@@ -84,7 +85,9 @@ public class FtcOpModeRegister implements OpModeRegister {
          * Any manual OpMode class registrations should go here.
          */
         manager.register("MainTeleOp", MainTeleOp.class);
-        manager.register("EncoderTest", PushbotAutoDriveByEncoder_Linear.class);
+        manager.register("Encoder Test", EncoderTest.class);
+        manager.register("ColorSensor Test", SensorMRColor.class);
+
 
 
 
