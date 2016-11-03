@@ -45,9 +45,21 @@ public class AutonomousBlue extends LinearOpMode{
         // run until driver presses STOP
         while (opModeIsActive()) {
 
+
             drive.move(1,1);
             harvester.power(1);
             launcher.power(1);
+
+            // Launch BAWLZ!
+            // Move to beacon until you see a blue or red
+            // Scan left / right to see if it's red or blue
+            // Press if it's red
+            // Move to the other one
+            // Check if its red or blue
+            // press if red
+            // Move back to center
+
+
 
             // Pause for metronome tick.  40 mS each cycle = update 25 times a second.
             robot.waitForTick(40);

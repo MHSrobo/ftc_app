@@ -10,5 +10,6 @@ public abstract class MadDevice {
 
     public MadDevice(TeleOpHardware robot) {
         this.robot = robot;
+
     }
 }
