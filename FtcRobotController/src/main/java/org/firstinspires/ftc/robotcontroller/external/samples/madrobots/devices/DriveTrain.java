@@ -4,14 +4,14 @@ package org.firstinspires.ftc.robotcontroller.external.samples.madrobots.devices
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.util.Range;
 
-import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.hardware.TeleOpHardware;
+import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.hardware.MainRobotHardware;
 
 /**
  * Created by Ben on 10/24/2016.
  */
 
 public class DriveTrain extends MadDevice {
-    public DriveTrain(TeleOpHardware robot) {
+    public DriveTrain(MainRobotHardware robot) {
         super(robot);
     }
 

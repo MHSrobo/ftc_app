@@ -2,7 +2,7 @@ package org.firstinspires.ftc.robotcontroller.external.samples.madrobots.devices
 
 import com.qualcomm.robotcore.hardware.Gamepad;
 
-import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.hardware.TeleOpHardware;
+import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.hardware.MainRobotHardware;
 import com.qualcomm.robotcore.util.Range;
 
 /**
@@ -11,7 +11,7 @@ import com.qualcomm.robotcore.util.Range;
 
 public class Launcher extends MadDevice {
 
-    public Launcher(TeleOpHardware robot) {
+    public Launcher(MainRobotHardware robot) {
         super(robot);
     }
 
