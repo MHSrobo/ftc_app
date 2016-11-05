@@ -8,9 +8,12 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.devices.DriveTrain;
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.devices.Harvester;
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.devices.Launcher;
+<<<<<<< HEAD
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.hardware.RobotHardware;
+=======
+import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.hardware.MainRobotHardware;
+>>>>>>> origin/master
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.util.Logger;
-
 
 /**
  * Created by Robotics on 10/21/2016.
@@ -21,7 +24,11 @@ public class AutonomousBlue extends LinearOpMode{
 
     /* Declare OpMode members. */
 
+<<<<<<< HEAD
     RobotHardware robot = new RobotHardware();
+=======
+    MainRobotHardware robot = new MainRobotHardware();
+>>>>>>> origin/master
     Harvester harvester;
     Launcher launcher;
     DriveTrain drive;
@@ -44,7 +51,6 @@ public class AutonomousBlue extends LinearOpMode{
 
         // run until driver presses STOP
         while (opModeIsActive()) {
-
 
             drive.move(1,1);
             harvester.power(1);

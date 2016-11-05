@@ -7,7 +7,11 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.devices.DriveTrain;
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.devices.Harvester;
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.devices.Launcher;
+<<<<<<< HEAD
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.hardware.RobotHardware;
+=======
+import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.hardware.MainRobotHardware;
+>>>>>>> origin/master
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.util.Logger;
 
 
@@ -20,7 +24,11 @@ public class MainTeleOp extends LinearOpMode{
 
     /* Declare OpMode members. */
 
+<<<<<<< HEAD
     RobotHardware robot = new RobotHardware();
+=======
+    MainRobotHardware robot = new MainRobotHardware();
+>>>>>>> origin/master
     Harvester harvester;
     Launcher launcher;
     DriveTrain drive;

@@ -2,7 +2,11 @@ package org.firstinspires.ftc.robotcontroller.external.samples.madrobots.devices
 
 import com.qualcomm.robotcore.hardware.Gamepad;
 
+<<<<<<< HEAD
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.hardware.RobotHardware;
+=======
+import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.hardware.MainRobotHardware;
+>>>>>>> origin/master
 import com.qualcomm.robotcore.util.Range;
 
 /**
@@ -11,7 +15,11 @@ import com.qualcomm.robotcore.util.Range;
 
 public class Launcher extends MadDevice {
 
+<<<<<<< HEAD
     public Launcher(RobotHardware robot) {
+=======
+    public Launcher(MainRobotHardware robot) {
+>>>>>>> origin/master
         super(robot);
     }
 

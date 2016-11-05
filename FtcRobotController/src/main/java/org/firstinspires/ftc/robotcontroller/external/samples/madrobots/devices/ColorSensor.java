@@ -2,7 +2,11 @@ package org.firstinspires.ftc.robotcontroller.external.samples.madrobots.devices
 
 import android.graphics.Color;
 
+<<<<<<< HEAD
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.hardware.RobotHardware;
+=======
+import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.hardware.MainRobotHardware;
+>>>>>>> origin/master
 
 /**
  * Created by Robotics on 11/1/2016.
@@ -11,7 +15,11 @@ import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.hardware
 
 public class ColorSensor extends MadDevice {
 
+<<<<<<< HEAD
     public ColorSensor(RobotHardware robot) {
+=======
+    public ColorSensor(MainRobotHardware robot) {
+>>>>>>> origin/master
         super(robot);
         robot.colorsensor.enableLed(false); // DISABLE LED FOR BETTER COLOR DETECTION
     }

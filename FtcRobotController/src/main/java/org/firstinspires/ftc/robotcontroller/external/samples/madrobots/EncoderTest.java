@@ -39,7 +39,10 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.hardware.EncoderTestHardware;
+<<<<<<< HEAD
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.util.Logger;
+=======
+>>>>>>> origin/master
 
 /**
  * This file illustrates the concept of driving a path based on encoder counts.
@@ -73,6 +76,7 @@ import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.util.Log
 public class EncoderTest extends LinearOpMode {
 
     /* Declare OpMode members. */
+
     EncoderTestHardware encoder   = new EncoderTestHardware();   // Use a Pushbot's hardware
     private ElapsedTime     runtime = new ElapsedTime();
 
@@ -104,7 +108,11 @@ public class EncoderTest extends LinearOpMode {
 
 
         // Send telemetry message to indicate successful Encoder reset
+<<<<<<< HEAD
         telemetry.addData("Path0",  "Starting at " + encoder.motor.getCurrentPosition());
+=======
+        telemetry.addData("Path0",  "Starting at " +  encoder.motor.getCurrentPosition());
+>>>>>>> origin/master
         telemetry.update();
 
         // Wait for the game to start (driver presses PLAY)
@@ -116,11 +124,7 @@ public class EncoderTest extends LinearOpMode {
         encoderDrive(TURN_SPEED,   12, 4.0);  // S2: Turn Right 12 Inches with 4 Sec timeout
         encoderDrive(DRIVE_SPEED, -24, 4.0);  // S3: Reverse 24 Inches with 4 Sec timeout
 
-        /*
-        robot.frontLeftClaw.setPosition(1.0);            // S4: Stop and close the claw.
-        robot.frontRightClaw.setPosition(0.0);
-        sleep(1000);     // pause for servos to move
-        */
+
 
         telemetry.addData("Path", "Complete");
         telemetry.update();
@@ -134,6 +138,10 @@ public class EncoderTest extends LinearOpMode {
      *  2) Move runs out of time
      *  3) Driver stops the opmode running.
      */
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
     public void encoderDrive(double speed, double frontLeftInches, double timeoutS) throws InterruptedException {
         int newTarget;
 
@@ -157,7 +165,11 @@ public class EncoderTest extends LinearOpMode {
 
                 // Display it for the driver.
                 telemetry.addData("Path1",  "Running to " + newTarget);
+<<<<<<< HEAD
                 telemetry.addData("Path2",  "Running at " + encoder.motor.getCurrentPosition());
+=======
+                telemetry.addData("Path2",  "Running at "  + encoder.motor.getCurrentPosition());
+>>>>>>> origin/master
                 telemetry.update();
 
                 // Allow time for other processes to run.
