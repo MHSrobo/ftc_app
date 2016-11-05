@@ -39,7 +39,6 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.hardware.EncoderTestHardware;
-import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.hardware.TeleOpHardware;
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.util.Logger;
 
 /**
@@ -80,8 +79,7 @@ public class EncoderTest extends LinearOpMode {
     static final double     COUNTS_PER_MOTOR_REV    = 1440 ;    // eg: TETRIX Motor Encoder
     static final double     DRIVE_GEAR_REDUCTION    = 2.0 ;     // This is < 1.0 if geared UP
     static final double     WHEEL_DIAMETER_INCHES   = 4.0 ;     // For figuring circumference
-    static final double     COUNTS_PER_INCH         = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) /
-            (WHEEL_DIAMETER_INCHES * 3.1415);
+    static final double     COUNTS_PER_INCH = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION)/(WHEEL_DIAMETER_INCHES * 3.1415);
     static final double     DRIVE_SPEED             = 0.6;
     static final double     TURN_SPEED              = 0.5;
 
@@ -100,15 +98,13 @@ public class EncoderTest extends LinearOpMode {
 
         encoder.motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-
         idle();
 
         encoder.motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
 
         // Send telemetry message to indicate successful Encoder reset
-        telemetry.addData("Path0",  "Starting at %7d",
-                encoder.motor.getCurrentPosition());
+        telemetry.addData("Path0",  "Starting at " + encoder.motor.getCurrentPosition());
         telemetry.update();
 
         // Wait for the game to start (driver presses PLAY)
@@ -138,9 +134,7 @@ public class EncoderTest extends LinearOpMode {
      *  2) Move runs out of time
      *  3) Driver stops the opmode running.
      */
-    public void encoderDrive(double speed,
-                             double frontLeftInches,
-                             double timeoutS) throws InterruptedException {
+    public void encoderDrive(double speed, double frontLeftInches, double timeoutS) throws InterruptedException {
         int newTarget;
 
         // Ensure that the opmode is still active
@@ -153,22 +147,17 @@ public class EncoderTest extends LinearOpMode {
             // Turn On RUN_TO_POSITION
             encoder.motor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-
-
             // reset the timeout time and start motion.
             runtime.reset();
             encoder.motor.setPower(Math.abs(speed));
 
 
             // keep looping while we are still active, and there is time frontLeft, and both motors are running.
-            while (opModeIsActive() &&
-                    (runtime.seconds() < timeoutS) &&
-                    (encoder.motor.isBusy() )) {
+            while (opModeIsActive() && (runtime.seconds() < timeoutS) && (encoder.motor.isBusy())) {
 
                 // Display it for the driver.
                 telemetry.addData("Path1",  "Running to " + newTarget);
-                Logger.log("Path2",  "Running at "
-                        + encoder.motor.getCurrentPosition());
+                telemetry.addData("Path2",  "Running at " + encoder.motor.getCurrentPosition());
                 telemetry.update();
 
                 // Allow time for other processes to run.

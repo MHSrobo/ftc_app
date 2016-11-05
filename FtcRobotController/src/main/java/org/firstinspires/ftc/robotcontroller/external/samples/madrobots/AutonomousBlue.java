@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.devices.DriveTrain;
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.devices.Harvester;
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.devices.Launcher;
-import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.hardware.TeleOpHardware;
+import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.hardware.RobotHardware;
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.util.Logger;
 
 
@@ -21,7 +21,7 @@ public class AutonomousBlue extends LinearOpMode{
 
     /* Declare OpMode members. */
 
-    TeleOpHardware robot = new TeleOpHardware();
+    RobotHardware robot = new RobotHardware();
     Harvester harvester;
     Launcher launcher;
     DriveTrain drive;

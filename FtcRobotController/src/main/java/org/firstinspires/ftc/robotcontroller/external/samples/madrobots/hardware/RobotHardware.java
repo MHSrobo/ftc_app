@@ -12,7 +12,7 @@ import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.util.Log
  * Created by Robotics on 10/21/2016.
  */
 
-public class TeleOpHardware {
+public class RobotHardware {
 
     /* Public OpMode members. */
     public DcMotor  frontLeftMotor;
@@ -39,7 +39,7 @@ public class TeleOpHardware {
     private ElapsedTime period  = new ElapsedTime();
 
     /* Constructor */
-    public TeleOpHardware() {
+    public RobotHardware() {
     }
 
     /* Initialize standard Hardware interfaces */
