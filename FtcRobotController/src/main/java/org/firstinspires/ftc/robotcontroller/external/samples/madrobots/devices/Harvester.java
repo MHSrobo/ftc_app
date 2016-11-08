@@ -14,11 +14,11 @@ import com.qualcomm.robotcore.util.Range;
 
 public class Harvester extends MadDevice  {
 
-<<<<<<< HEAD
+
     public Harvester(RobotHardware robot) {
-=======
+
     public Harvester(MainRobotHardware robot) {
->>>>>>> origin/master
+
         super(robot);
     }
 
