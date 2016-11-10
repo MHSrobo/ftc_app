@@ -4,22 +4,19 @@ package org.firstinspires.ftc.robotcontroller.external.samples.madrobots.devices
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.util.Range;
 
-<<<<<<< HEAD
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.hardware.RobotHardware;
-=======
+
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.hardware.MainRobotHardware;
->>>>>>> origin/master
+
 
 /**
  * Created by Ben on 10/24/2016.
  */
 
 public class DriveTrain extends MadDevice {
-<<<<<<< HEAD
-    public DriveTrain(RobotHardware robot) {
-=======
+
     public DriveTrain(MainRobotHardware robot) {
->>>>>>> origin/master
+
         super(robot);
     }
 
@@ -30,11 +27,13 @@ public class DriveTrain extends MadDevice {
     }
 
     public void move(double left, double right){
+
         left = Range.clip(left, -1, 1);
         right = Range.clip(right, -1, 1);
         robot.frontRightMotor.setPower(right);
         robot.frontLeftMotor.setPower(left);
         robot.backRightMotor.setPower(right);
         robot.backLeftMotor.setPower(left);
+ 
     }
 }

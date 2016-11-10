@@ -3,32 +3,29 @@ package org.firstinspires.ftc.robotcontroller.external.samples.madrobots;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.devices.DriveTrain;
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.devices.Harvester;
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.devices.Launcher;
-<<<<<<< HEAD
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.hardware.RobotHardware;
-=======
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.hardware.MainRobotHardware;
->>>>>>> origin/master
+
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.util.Logger;
 
 
 /**
  * Created by Robotics on 10/21/2016.
  */
+
 @TeleOp(name = "MainTeleOp", group = "TeleOps")
 @Disabled
+
 public class MainTeleOp extends LinearOpMode{
 
     /* Declare OpMode members. */
 
-<<<<<<< HEAD
-    RobotHardware robot = new RobotHardware();
-=======
     MainRobotHardware robot = new MainRobotHardware();
->>>>>>> origin/master
     Harvester harvester;
     Launcher launcher;
     DriveTrain drive;
@@ -36,10 +33,13 @@ public class MainTeleOp extends LinearOpMode{
     @Override
     public void runOpMode() throws InterruptedException {
 
-        /* Initialize the hardware variables.
+        /*
+         * Initialize the hardware variables.
          * The init() method of the hardware class does all the work here
          */
-        robot.init(hardwareMap);
+
+        //false = run without encoders
+        robot.init(hardwareMap, false);
 
         Logger.init(telemetry);
 

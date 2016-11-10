@@ -21,7 +21,6 @@ public class RobotHardware {
     public DcMotor  backRightMotor;
     public DcMotor  harvester;
     public DcMotor  launcher;
-
     public ColorSensor colorsensor;
 
     //public Servo    arm;
@@ -29,12 +28,15 @@ public class RobotHardware {
 
     //public final static double ARM_HOME = 0.2;
     //public final static double CLAW_HOME = 0.2;
-    /*public final static double ARM_MIN_RANGE  = 0.20;
-    public final static double ARM_MAX_RANGE  = 0.90;
-    public final static double CLAW_MIN_RANGE  = 0.20;
-    public final static double CLAW_MAX_RANGE  = 0.7;*/
+
+
+    //public final static double ARM_MIN_RANGE  = 0.20;
+    //public final static double ARM_MAX_RANGE  = 0.90;
+    //public final static double CLAW_MIN_RANGE  = 0.20;
+    //public final static double CLAW_MAX_RANGE  = 0.7;
 
     /* Local OpMode members. */
+
     HardwareMap hwMap;
     private ElapsedTime period  = new ElapsedTime();
 
@@ -77,10 +79,10 @@ public class RobotHardware {
         backRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         // Define and initialize ALL installed servos.
-        /*arm = hwMap.servo.get("arm");
-        claw = hwMap.servo.get("claw");
-        arm.setPosition(ARM_HOME);
-        claw.setPosition(CLAW_HOME);*/
+        //arm = hwMap.servo.get("arm");
+        //claw = hwMap.servo.get("claw");
+        //arm.setPosition(ARM_HOME);
+        //claw.setPosition(CLAW_HOME);
     }
 
     /***

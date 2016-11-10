@@ -4,16 +4,13 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
-
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.devices.DriveTrain;
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.devices.Harvester;
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.devices.Launcher;
-<<<<<<< HEAD
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.hardware.RobotHardware;
-=======
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.hardware.MainRobotHardware;
->>>>>>> origin/master
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.util.Logger;
+import com.qualcomm.robotcore.hardware.DcMotor;
 
 /**
  * Created by Robotics on 10/21/2016.
@@ -24,11 +21,7 @@ public class AutonomousBlue extends LinearOpMode{
 
     /* Declare OpMode members. */
 
-<<<<<<< HEAD
-    RobotHardware robot = new RobotHardware();
-=======
     MainRobotHardware robot = new MainRobotHardware();
->>>>>>> origin/master
     Harvester harvester;
     Launcher launcher;
     DriveTrain drive;
@@ -38,19 +31,25 @@ public class AutonomousBlue extends LinearOpMode{
     @Override
     public void runOpMode() throws InterruptedException {
 
-        /* Initialize the hardware variables.
-         * The init() method of the hardware class does all the work here
-         */
-        robot.init(hardwareMap);
+        //Initialize the hardware variables.
+        //The init() method of the hardware class does all the work here
 
+        //true = run with encoders
+        robot.init(hardwareMap, true);
         Logger.init(telemetry);
 
+        robot.backLeftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        robot.backRightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        robot.frontRightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        robot.frontLeftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         // Wait until driver presses PLAY
         waitForStart();
 
         // run until driver presses STOP
         while (opModeIsActive()) {
+
+            encoderDrive(1.0,2,3.0, robot.backLeftMotor);
 
             drive.move(1,1);
             harvester.power(1);
@@ -72,6 +71,48 @@ public class AutonomousBlue extends LinearOpMode{
             idle(); // Always call idle() at the bottom of your while(opModeIsActive()) loop
         }
     }
+
+
+    public void encoderDrive(double speed, double frontLeftInches, double timeoutS, DcMotor Motor) throws InterruptedException {
+        int newTarget;
+
+
+        // Ensure that the opmode is still active
+        if (opModeIsActive()) {
+
+            // Determine new target position, and pass to motor controller
+            newTarget = robot.motor.getCurrentPosition() + (int)(frontLeftInches * 1440);
+            robot.motor.setTargetPosition(newTarget);
+
+            // Turn On RUN_TO_POSITION
+            robot.motor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+            // reset the timeout time and start motion.
+            runtime.reset();
+            robot.motor.setPower(Math.abs(speed));
+
+
+            // keep looping while we are still active, and there is time frontLeft, and both motors are running.
+            while (opModeIsActive() && (runtime.seconds() < timeoutS) && (robot.motor.isBusy())) {
+
+                // Display it for the driver.
+                telemetry.addData("Path1",  "Running to " + newTarget);
+                telemetry.addData("Path2",  "Running at " + robot.motor.getCurrentPosition());
+                telemetry.addData("Path2",  "Running at "  + robot.motor.getCurrentPosition());
+                telemetry.update();
+
+                // Allow time for other processes to run.
+                idle();
+            }
+
+            // Stop all motion;
+            robot.motor.setPower(0);
+
+            // Turn off RUN_TO_POSITION
+            robot.motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+            //  sleep(250);   // optional pause after each move
+        }
 }
 
 
