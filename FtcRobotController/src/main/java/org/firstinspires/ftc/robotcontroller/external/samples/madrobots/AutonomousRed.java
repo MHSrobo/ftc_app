@@ -30,6 +30,7 @@ public class AutonomousRed extends LinearOpMode{
     DriveTrain drive;
 
 
+
     @Override
     public void runOpMode() throws InterruptedException {
 
@@ -37,9 +38,7 @@ public class AutonomousRed extends LinearOpMode{
         //The init() method of the hardware class does all the work here
 
 
-        //true = run with encoders
-        robot.init(hardwareMap, true);
-
+        robot.init(hardwareMap, true);  //true = run with encoders
         Logger.init(telemetry);
 
         // Initialize madison proprietary abstractions
@@ -53,15 +52,22 @@ public class AutonomousRed extends LinearOpMode{
         // run until driver presses STOP
         while (opModeIsActive()) {
 
-            //
-            if()
-            encoderDrive(1.0,2.0,3.0, robot.frontLeftMotor);
-            encoderDrive(1.0,2.0,3.0, robot.frontRightMotor);
-            encoderDrive(1.0,2.0,3.0, robot.backLeftMotor);
-            encoderDrive(1.0,2.0,3.0, robot.backRightMotor);
 
+            //encoderDrive(speed, distance in inches, timeoutS, motor)
 
-            drive.move(1,1);
+            //Step 1:
+            runtime.reset();
+            if(runtime.seconds() < 3.0){
+                drive.encoderDrive(0.5, 3.0, 3.0, robot.frontLeftMotor);
+                
+            }
+
+            //Step 2:
+            runtime.reset();
+            if(runtime.seconds() < 4.0){
+
+            }
+
             harvester.power(1);
             launcher.power(1);
 
@@ -72,46 +78,7 @@ public class AutonomousRed extends LinearOpMode{
     }
 
 
-    public void encoderDrive(double speed, double frontLeftInches, double timeoutS, DcMotor Motor) throws InterruptedException {
-        int newTarget;
 
-        // Ensure that the opmode is still active
-        if (opModeIsActive()) {
-
-            // Determine new target position, and pass to motor controller
-            newTarget = Motor.getCurrentPosition() + (int) (frontLeftInches * 1440);
-            Motor.setTargetPosition(newTarget);
-
-            // Turn On RUN_TO_POSITION
-            Motor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
-            // reset the timeout time and start motion.
-            runtime.reset();
-            Motor.setPower(Math.abs(speed));
-
-
-            // keep looping while we are still active, and there is time frontLeft, and both motors are running.
-            while (opModeIsActive() && (runtime.seconds() < timeoutS) && (Motor.isBusy())) {
-
-                // Display it for the driver.
-                telemetry.addData("Path1", "Running to " + newTarget);
-                telemetry.addData("Path2", "Running at " + Motor.getCurrentPosition());
-                telemetry.addData("Path2", "Running at " + Motor.getCurrentPosition());
-                telemetry.update();
-
-                // Allow time for other processes to run.
-                idle();
-            }
-
-            // Stop all motion;
-            Motor.setPower(0);
-
-            // Turn off RUN_TO_POSITION
-            Motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-            //  sleep(250);   // optional pause after each move
-        }
-    }
 }
 
 

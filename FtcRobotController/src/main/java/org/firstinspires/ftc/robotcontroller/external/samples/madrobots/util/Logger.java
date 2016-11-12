@@ -22,4 +22,7 @@ public class Logger {
         // add to logger
         telemetry.addData(key, str);
     }
+    public static void update(){
+        telemetry.update();
+    }
 }
