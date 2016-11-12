@@ -49,10 +49,7 @@ public class AutonomousBlue extends LinearOpMode {
 
         // run until driver presses STOP
         while (opModeIsActive()) {
-
-            encoderDrive(1.0, 2, 3.0, robot.backLeftMotor);
-
-
+            
             drive.move(1, 1);
             harvester.power(1);
             launcher.power(1);
@@ -74,46 +71,7 @@ public class AutonomousBlue extends LinearOpMode {
     }
 
 
-    public void encoderDrive(double speed, double frontLeftInches, double timeoutS, DcMotor Motor) throws InterruptedException {
-        int newTarget;
 
-        // Ensure that the opmode is still active
-        if (opModeIsActive()) {
-
-            // Determine new target position, and pass to motor controller
-            newTarget = Motor.getCurrentPosition() + (int) (frontLeftInches * 1440);
-            Motor.setTargetPosition(newTarget);
-
-            // Turn On RUN_TO_POSITION
-            Motor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
-            // reset the timeout time and start motion.
-            runtime.reset();
-            Motor.setPower(Math.abs(speed));
-
-
-            // keep looping while we are still active, and there is time frontLeft, and both motors are running.
-            while (opModeIsActive() && (runtime.seconds() < timeoutS) && (Motor.isBusy())) {
-
-                // Display it for the driver.
-                telemetry.addData("Path1", "Running to " + newTarget);
-                telemetry.addData("Path2", "Running at " + Motor.getCurrentPosition());
-                telemetry.addData("Path2", "Running at " + Motor.getCurrentPosition());
-                telemetry.update();
-
-                // Allow time for other processes to run.
-                idle();
-            }
-
-            // Stop all motion;
-            Motor.setPower(0);
-
-            // Turn off RUN_TO_POSITION
-            Motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-            //  sleep(250);   // optional pause after each move
-        }
-    }
 }
 
 
