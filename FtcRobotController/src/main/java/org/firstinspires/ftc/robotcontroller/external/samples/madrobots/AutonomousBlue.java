@@ -7,7 +7,6 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.devices.DriveTrain;
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.devices.Harvester;
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.devices.Launcher;
-import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.hardware.RobotHardware;
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.hardware.MainRobotHardware;
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.util.Logger;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -15,18 +14,20 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 /**
  * Created by Robotics on 10/21/2016.
  */
-@TeleOp(name = "AutonomousBlue", group = "Autons")
+
+@TeleOp(name = "AutonomousBlue", group = "Autos")
 @Disabled
-public class AutonomousBlue extends LinearOpMode{
+
+public class AutonomousBlue extends LinearOpMode {
 
     /* Declare OpMode members. */
 
+    ElapsedTime runtime = new ElapsedTime();
     MainRobotHardware robot = new MainRobotHardware();
     Harvester harvester;
     Launcher launcher;
     DriveTrain drive;
 
-    private ElapsedTime runtime = new ElapsedTime();
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -49,9 +50,10 @@ public class AutonomousBlue extends LinearOpMode{
         // run until driver presses STOP
         while (opModeIsActive()) {
 
-            encoderDrive(1.0,2,3.0, robot.backLeftMotor);
+            encoderDrive(1.0, 2, 3.0, robot.backLeftMotor);
 
-            drive.move(1,1);
+
+            drive.move(1, 1);
             harvester.power(1);
             launcher.power(1);
 
@@ -65,7 +67,6 @@ public class AutonomousBlue extends LinearOpMode{
             // Move back to center
 
 
-
             // Pause for metronome tick.  40 mS each cycle = update 25 times a second.
             robot.waitForTick(40);
             idle(); // Always call idle() at the bottom of your while(opModeIsActive()) loop
@@ -76,29 +77,28 @@ public class AutonomousBlue extends LinearOpMode{
     public void encoderDrive(double speed, double frontLeftInches, double timeoutS, DcMotor Motor) throws InterruptedException {
         int newTarget;
 
-
         // Ensure that the opmode is still active
         if (opModeIsActive()) {
 
             // Determine new target position, and pass to motor controller
-            newTarget = robot.motor.getCurrentPosition() + (int)(frontLeftInches * 1440);
-            robot.motor.setTargetPosition(newTarget);
+            newTarget = Motor.getCurrentPosition() + (int) (frontLeftInches * 1440);
+            Motor.setTargetPosition(newTarget);
 
             // Turn On RUN_TO_POSITION
-            robot.motor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            Motor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
             // reset the timeout time and start motion.
             runtime.reset();
-            robot.motor.setPower(Math.abs(speed));
+            Motor.setPower(Math.abs(speed));
 
 
             // keep looping while we are still active, and there is time frontLeft, and both motors are running.
-            while (opModeIsActive() && (runtime.seconds() < timeoutS) && (robot.motor.isBusy())) {
+            while (opModeIsActive() && (runtime.seconds() < timeoutS) && (Motor.isBusy())) {
 
                 // Display it for the driver.
-                telemetry.addData("Path1",  "Running to " + newTarget);
-                telemetry.addData("Path2",  "Running at " + robot.motor.getCurrentPosition());
-                telemetry.addData("Path2",  "Running at "  + robot.motor.getCurrentPosition());
+                telemetry.addData("Path1", "Running to " + newTarget);
+                telemetry.addData("Path2", "Running at " + Motor.getCurrentPosition());
+                telemetry.addData("Path2", "Running at " + Motor.getCurrentPosition());
                 telemetry.update();
 
                 // Allow time for other processes to run.
@@ -106,15 +106,15 @@ public class AutonomousBlue extends LinearOpMode{
             }
 
             // Stop all motion;
-            robot.motor.setPower(0);
+            Motor.setPower(0);
 
             // Turn off RUN_TO_POSITION
-            robot.motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            Motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
             //  sleep(250);   // optional pause after each move
         }
+    }
 }
-
 
 
 

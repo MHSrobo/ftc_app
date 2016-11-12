@@ -33,15 +33,15 @@ public class MainTeleOp extends LinearOpMode{
     @Override
     public void runOpMode() throws InterruptedException {
 
-        /*
-         * Initialize the hardware variables.
-         * The init() method of the hardware class does all the work here
-         */
+
+       //Initialize the hardware variables.
+       //The init() method of the hardware class does all the work here
+
+        Logger.init(telemetry);
 
         //false = run without encoders
         robot.init(hardwareMap, false);
 
-        Logger.init(telemetry);
 
         // Initialize madison proprietary abstractions
         harvester = new Harvester(robot);
@@ -59,7 +59,6 @@ public class MainTeleOp extends LinearOpMode{
             drive.gamepadMove(gamepad1);
             harvester.gamepadControl(gamepad1);
             launcher.gamepadControl(gamepad1);
-
 
             // Pause for metronome tick.  40 mS each cycle = update 25 times a second.
             robot.waitForTick(40);
