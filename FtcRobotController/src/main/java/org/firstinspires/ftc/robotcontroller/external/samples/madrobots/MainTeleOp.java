@@ -14,8 +14,10 @@ import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.util.Log
 /**
  * Created by Robotics on 10/21/2016.
  */
+
 @TeleOp(name = "MainTeleOp", group = "TeleOps")
 @Disabled
+
 public class MainTeleOp extends LinearOpMode{
 
     /* Declare OpMode members. */
@@ -28,12 +30,15 @@ public class MainTeleOp extends LinearOpMode{
     @Override
     public void runOpMode() throws InterruptedException {
 
-        /* Initialize the hardware variables.
-         * The init() method of the hardware class does all the work here
-         */
-        robot.init(hardwareMap);
+
+       //Initialize the hardware variables.
+       //The init() method of the hardware class does all the work here
 
         Logger.init(telemetry);
+
+        //false = run without encoders
+        robot.init(hardwareMap);
+
 
         // Initialize madison proprietary abstractions
         harvester = new Harvester(robot);
@@ -51,7 +56,6 @@ public class MainTeleOp extends LinearOpMode{
             drive.gamepadMove(gamepad1);
             harvester.gamepadControl(gamepad1);
             launcher.gamepadControl(gamepad1);
-
 
             // Pause for metronome tick.  40 mS each cycle = update 25 times a second.
             robot.waitForTick(40);

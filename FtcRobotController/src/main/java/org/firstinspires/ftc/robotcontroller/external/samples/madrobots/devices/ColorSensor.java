@@ -8,7 +8,6 @@ import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.hardware
  * Created by Robotics on 11/1/2016.
  */
 
-
 public class ColorSensor extends MadDevice {
 
     public ColorSensor(RobotHardware robot) {

@@ -19,6 +19,7 @@ public class Harvester extends MadDevice  {
      * Control with RB and LB using a gamepad.
      * @param gamepad
      */
+
     public void gamepadControl(Gamepad gamepad) {
         double harvestPower = 0;
         if (gamepad.right_bumper){
@@ -33,6 +34,7 @@ public class Harvester extends MadDevice  {
      * Set the power of the harvester.
      * @param power
      */
+
     public void power(double power) {
         power = Range.clip(power, -1,1);
         robot.harvester.setPower(power);
