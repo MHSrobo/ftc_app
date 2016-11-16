@@ -45,7 +45,8 @@ public class MainTeleOp extends LinearOpMode{
         launcher = new Launcher(robot);
         drive = new DriveTrain(robot);
 
-        drive.move(0, 1);
+        drive.move(Math.PI/2
+        );
 
         // Wait unit driver presses PLAY
         waitForStart();
