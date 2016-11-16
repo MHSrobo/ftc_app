@@ -39,10 +39,6 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.hardware.EncoderTestHardware;
-<<<<<<< HEAD
-import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.util.Logger;
-=======
->>>>>>> origin/master
 
 /**
  * This file illustrates the concept of driving a path based on encoder counts.
@@ -108,11 +104,7 @@ public class EncoderTest extends LinearOpMode {
 
 
         // Send telemetry message to indicate successful Encoder reset
-<<<<<<< HEAD
         telemetry.addData("Path0",  "Starting at " + encoder.motor.getCurrentPosition());
-=======
-        telemetry.addData("Path0",  "Starting at " +  encoder.motor.getCurrentPosition());
->>>>>>> origin/master
         telemetry.update();
 
         // Wait for the game to start (driver presses PLAY)
@@ -138,10 +130,6 @@ public class EncoderTest extends LinearOpMode {
      *  2) Move runs out of time
      *  3) Driver stops the opmode running.
      */
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
     public void encoderDrive(double speed, double frontLeftInches, double timeoutS) throws InterruptedException {
         int newTarget;
 
@@ -165,11 +153,7 @@ public class EncoderTest extends LinearOpMode {
 
                 // Display it for the driver.
                 telemetry.addData("Path1",  "Running to " + newTarget);
-<<<<<<< HEAD
                 telemetry.addData("Path2",  "Running at " + encoder.motor.getCurrentPosition());
-=======
-                telemetry.addData("Path2",  "Running at "  + encoder.motor.getCurrentPosition());
->>>>>>> origin/master
                 telemetry.update();
 
                 // Allow time for other processes to run.

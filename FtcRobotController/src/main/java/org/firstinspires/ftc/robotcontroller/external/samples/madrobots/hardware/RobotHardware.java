@@ -21,6 +21,7 @@ public class RobotHardware {
     public DcMotor  backRightMotor;
     public DcMotor  harvester;
     public DcMotor  launcher;
+    public DcMotor test;
 
     public ColorSensor colorsensor;
 
@@ -52,6 +53,8 @@ public class RobotHardware {
         frontRightMotor  = hwMap.dcMotor.get("front right");
         backLeftMotor = hwMap.dcMotor.get("back left");
         backRightMotor = hwMap.dcMotor.get("back right");
+
+        test = hwMap.dcMotor.get("go home gamer girl");
 
         harvester = hwMap.dcMotor.get("harvester");
         launcher = hwMap.dcMotor.get("launcher");

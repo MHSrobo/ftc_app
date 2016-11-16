@@ -1,11 +1,7 @@
 package org.firstinspires.ftc.robotcontroller.external.samples.madrobots.devices;
 
 import com.qualcomm.robotcore.hardware.Gamepad;
-<<<<<<< HEAD
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.hardware.RobotHardware;
-=======
-import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.hardware.MainRobotHardware;
->>>>>>> origin/master
 import com.qualcomm.robotcore.util.Range;
 
 /**
@@ -16,9 +12,6 @@ public class Harvester extends MadDevice  {
 
 
     public Harvester(RobotHardware robot) {
-
-    public Harvester(MainRobotHardware robot) {
-
         super(robot);
     }
 
