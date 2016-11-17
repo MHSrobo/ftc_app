@@ -2,6 +2,7 @@ package org.firstinspires.ftc.robotcontroller.external.samples.madrobots.hardwar
 
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -46,7 +47,7 @@ public class RobotHardware {
     }
 
     /* Initialize standard Hardware interfaces */
-    public void init(HardwareMap ahwMap) {
+    public void init(HardwareMap ahwMap, Boolean runWithEncoders) {
         // save reference to HW Map
         hwMap = ahwMap;
 
@@ -56,14 +57,16 @@ public class RobotHardware {
         backLeftMotor = hwMap.dcMotor.get("back left");
         backRightMotor = hwMap.dcMotor.get("back right");
 
-        test = hwMap.dcMotor.get("go home gamer girl");
+        //harvester = hwMap.dcMotor.get("harvester");
+        //launcher = hwMap.dcMotor.get("launcher");
 
-        harvester = hwMap.dcMotor.get("harvester");
-        launcher = hwMap.dcMotor.get("launcher");
+        //colorsensor = hwMap.colorSensor.get("color sensor");
 
-        colorsensor = hwMap.colorSensor.get("color sensor");
-
+        frontRightMotor.setDirection(DcMotor.Direction.REVERSE);
         frontLeftMotor.setDirection(DcMotor.Direction.REVERSE);
+        //backLeftMotor.setDirection(DcMotor.Direction.REVERSE);
+
+
 
         // Set all motors to zero power
         frontLeftMotor.setPower(0);
@@ -71,15 +74,24 @@ public class RobotHardware {
         backLeftMotor.setPower(0);
         backRightMotor.setPower(0);
 
-        harvester.setPower(0);
-        launcher.setPower(0);
+        //harvester.setPower(0);
+        //launcher.setPower(0);
 
         // Set all motors to run without encoders.
         // May want to use RUN_USING_ENCODERS if encoders are installed.
-        frontLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        frontRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        backLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        backRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        if(runWithEncoders){
+            frontLeftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            frontRightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            backLeftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            backRightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        }
+        else{
+            frontLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+            frontRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+            backLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+            backRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        }
+
 
         // Define and initialize ALL installed servos.
         //arm = hwMap.servo.get("arm");

@@ -29,16 +29,30 @@ public class DriveTrain extends MadDevice {
     }
 
     public void gamepadMove(Gamepad gamepad) {
-        double x = -gamepad.left_stick_y;
-        double y = gamepad.left_stick_x;
-        move(Math.atan2(y, x));
+        double y = -gamepad.left_stick_y;
+        double x = gamepad.left_stick_x;
+
+        strafe(x,y);
     }
 
-    public void move(double radians){
-        robot.frontLeftMotor.setPower(Math.sin(radians+Math.PI/4));
-        robot.frontRightMotor.setPower(Math.cos(radians+Math.PI/4));
-        robot.backLeftMotor.setPower(Math.cos(radians+Math.PI/4));
-        robot.backRightMotor.setPower(Math.sin(radians+Math.PI/4));
+    public void strafe(double x, double y ){
+        double radians = Math.atan2(y,x);
+
+        if(x == 0 && y ==0 ){
+            robot.frontLeftMotor.setPower(0);
+            robot.frontRightMotor.setPower(0);
+            robot.backLeftMotor.setPower(0);
+            robot.backRightMotor.setPower(0);
+            
+
+        }
+
+        else{
+            robot.frontLeftMotor.setPower(Math.sin(radians+Math.PI/4));
+            robot.frontRightMotor.setPower(Math.cos(radians+Math.PI/4));
+            robot.backLeftMotor.setPower(Math.cos(radians+Math.PI/4));
+            robot.backRightMotor.setPower(Math.sin(radians+Math.PI/4));
+        }
     }
 
     public void encoderDrive(double speed, double distanceInches, double timeoutS, DcMotor Motor) throws InterruptedException {
