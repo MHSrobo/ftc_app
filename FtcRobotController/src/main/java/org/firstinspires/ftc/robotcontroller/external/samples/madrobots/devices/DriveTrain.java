@@ -28,32 +28,117 @@ public class DriveTrain extends MadDevice {
         super(robot);
     }
 
+
     public void gamepadMove(Gamepad gamepad) {
         double y = -gamepad.left_stick_y;
         double x = gamepad.left_stick_x;
+        double a = gamepad.right_stick_x;
+        
 
-        strafe(x,y);
+
+        strafe(x, y, a);
+        turn(a);
+
     }
 
-    public void strafe(double x, double y ){
-        double radians = Math.atan2(y,x);
+    public void turn(double a) {
+        if (a == -1) {
+            robot.frontLeftMotor.setPower(-1);
+            robot.frontRightMotor.setPower(-1);
+            robot.backLeftMotor.setPower(1);
+            robot.backRightMotor.setPower(1);
 
-        if(x == 0 && y ==0 ){
+
+        }
+        if (a == 1) {
+            robot.frontLeftMotor.setPower(1);
+            robot.frontRightMotor.setPower(1);
+            robot.backLeftMotor.setPower(-1);
+            robot.backRightMotor.setPower(-1);
+
+
+        }
+
+
+
+    }
+
+
+
+    public void strafe(double x, double y, double a ) {
+        double radians = Math.atan2(y, x);
+
+
+
+
+
+        if(x == 0 && y ==0 && a == 0 ){
             robot.frontLeftMotor.setPower(0);
             robot.frontRightMotor.setPower(0);
             robot.backLeftMotor.setPower(0);
             robot.backRightMotor.setPower(0);
-            
+
 
         }
 
-        else{
-            robot.frontLeftMotor.setPower(Math.sin(radians+Math.PI/4));
-            robot.frontRightMotor.setPower(Math.cos(radians+Math.PI/4));
-            robot.backLeftMotor.setPower(Math.cos(radians+Math.PI/4));
-            robot.backRightMotor.setPower(Math.sin(radians+Math.PI/4));
+
+        if (x == -1 && y == 0) {
+            // robot.frontLeftMotor.setPower(Math.sin(radians+Math.PI/4));
+            // robot.frontRightMotor.setPower(Math.cos(radians+Math.PI/4));
+            // robot.backLeftMotor.setPower(Math.cos(radians+Math.PI/4));
+            // robot.backRightMotor.setPower(Math.sin(radians+Math.PI/4));
+
+            robot.frontLeftMotor.setPower(-1); //strafe left
+            robot.frontRightMotor.setPower(-1);
+            robot.backLeftMotor.setPower(-1);
+            robot.backRightMotor.setPower(-1);
+
         }
-    }
+        if (x == 1 && y == 0) {
+            // robot.frontLeftMotor.setPower(Math.sin(radians+Math.PI/4));
+            // robot.frontRightMotor.setPower(Math.cos(radians+Math.PI/4));
+            // robot.backLeftMotor.setPower(Math.cos(radians+Math.PI/4));
+            // robot.backRightMotor.setPower(Math.sin(radians+Math.PI/4));
+
+            robot.frontLeftMotor.setPower(1);   //strafe right
+            robot.frontRightMotor.setPower(1);
+            robot.backLeftMotor.setPower(1);
+            robot.backRightMotor.setPower(1);
+
+        }
+
+        if  (x == 0 && y == -1) {
+            // robot.frontLeftMotor.setPower(Math.sin(radians+Math.PI/4));
+            // robot.frontRightMotor.setPower(Math.cos(radians+Math.PI/4));
+            // robot.backLeftMotor.setPower(Math.cos(radians+Math.PI/4));
+            // robot.backRightMotor.setPower(Math.sin(radians+Math.PI/4));
+
+            robot.frontLeftMotor.setPower(-1);   //strafe forward
+            robot.frontRightMotor.setPower(1);
+            robot.backLeftMotor.setPower(1);
+            robot.backRightMotor.setPower(-1);
+
+        }
+
+
+        if  (x == 0 && y == 1) {
+            // robot.frontLeftMotor.setPower(Math.sin(radians+Math.PI/4));
+            // robot.frontRightMotor.setPower(Math.cos(radians+Math.PI/4));
+            // robot.backLeftMotor.setPower(Math.cos(radians+Math.PI/4));
+            // robot.backRightMotor.setPower(Math.sin(radians+Math.PI/4));
+
+            robot.frontLeftMotor.setPower(1);   //strafe back
+            robot.frontRightMotor.setPower(-1);
+            robot.backLeftMotor.setPower(-1);
+            robot.backRightMotor.setPower(1);
+
+        }
+
+
+}
+
+
+
 
     public void encoderDrive(double speed, double distanceInches, double timeoutS, DcMotor Motor) throws InterruptedException {
         int newTarget;
