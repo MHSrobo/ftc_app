@@ -22,10 +22,10 @@ public class Harvester extends MadDevice  {
 
     public void gamepadControl(Gamepad gamepad) {
         double harvestPower = 0;
-        if (gamepad.y){
+        if (gamepad.left_bumper){
             harvestPower += 1;
         }
-        if(gamepad.a)
+        if(gamepad.right_bumper)
             harvestPower -= 1;
         power(harvestPower);
     }

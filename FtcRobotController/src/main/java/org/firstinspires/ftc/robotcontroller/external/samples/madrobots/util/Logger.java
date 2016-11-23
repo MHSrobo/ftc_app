@@ -13,14 +13,10 @@ public class Logger {
         Logger.telemetry = telemetry;
     }
 
-    public static void log(String str) {
-        // add to logger
-        telemetry.addData("Logger", str);
-    }
-
     public static void log(String key, String str) {
         // add to logger
         telemetry.addData(key, str);
+        update();
     }
     public static void update(){
         telemetry.update();

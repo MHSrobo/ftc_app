@@ -39,6 +39,10 @@ import com.qualcomm.robotcore.eventloop.opmode.AnnotatedOpModeRegistrar;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.robotcontroller.external.samples.ConceptNullOp;
+import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.AutoBlueCorner;
+import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.AutoBlueMid;
+import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.AutoRedCorner;
+import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.AutoRedMid;
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.EncoderTest;
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.MainTeleOp;
 import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.SensorMRColor;
@@ -86,5 +90,9 @@ public class FtcOpModeRegister implements OpModeRegister {
         manager.register("MainTeleOp", MainTeleOp.class);
         manager.register("Encoder Test", EncoderTest.class);
         manager.register("ColorSensor Test", SensorMRColor.class);
+        manager.register("Red Auto Corner", AutoRedCorner.class);
+        manager.register("Red Auto mid", AutoRedMid.class);
+        manager.register("Blue Auto Corner", AutoBlueCorner.class);
+        manager.register("Blue Auto Mid", AutoBlueMid.class);
     }
 }

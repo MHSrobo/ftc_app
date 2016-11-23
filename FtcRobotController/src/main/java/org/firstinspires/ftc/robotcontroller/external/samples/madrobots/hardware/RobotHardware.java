@@ -51,46 +51,50 @@ public class RobotHardware {
         // save reference to HW Map
         hwMap = ahwMap;
 
-        // Define and Initialize Motors
-        frontLeftMotor   = hwMap.dcMotor.get("front left");
-        frontRightMotor  = hwMap.dcMotor.get("front right");
-        backLeftMotor = hwMap.dcMotor.get("back left");
-        backRightMotor = hwMap.dcMotor.get("back right");
+        test = hwMap.dcMotor.get("test");
+        test.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        //harvester = hwMap.dcMotor.get("harvester");
-        //launcher = hwMap.dcMotor.get("launcher");
+
+        // Define and Initialize Motors
+//        frontLeftMotor   = hwMap.dcMotor.get("front left");
+//        frontRightMotor  = hwMap.dcMotor.get("front right");
+//        backLeftMotor = hwMap.dcMotor.get("back left");
+//        backRightMotor = hwMap.dcMotor.get("back right");
+//
+//        harvester = hwMap.dcMotor.get("harvester");
+//        launcher = hwMap.dcMotor.get("launcher");
 
         //colorsensor = hwMap.colorSensor.get("color sensor");
 
-        frontRightMotor.setDirection(DcMotor.Direction.REVERSE);
-        frontLeftMotor.setDirection(DcMotor.Direction.REVERSE);
-        //backLeftMotor.setDirection(DcMotor.Direction.REVERSE);
-
-
-
-        // Set all motors to zero power
-        frontLeftMotor.setPower(0);
-        frontRightMotor.setPower(0);
-        backLeftMotor.setPower(0);
-        backRightMotor.setPower(0);
-
-        //harvester.setPower(0);
-        //launcher.setPower(0);
-
-        // Set all motors to run without encoders.
-        // May want to use RUN_USING_ENCODERS if encoders are installed.
-        if(runWithEncoders){
-            frontLeftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            frontRightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            backLeftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            backRightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        }
-        else{
-            frontLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-            frontRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-            backLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-            backRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        }
+//        frontRightMotor.setDirection(DcMotor.Direction.REVERSE);
+//        frontLeftMotor.setDirection(DcMotor.Direction.REVERSE);
+//        //backLeftMotor.setDirection(DcMotor.Direction.REVERSE);
+//
+//
+//
+//        // Set all motors to zero power
+//        frontLeftMotor.setPower(0);
+//        frontRightMotor.setPower(0);
+//        backLeftMotor.setPower(0);
+//        backRightMotor.setPower(0);
+//
+//        harvester.setPower(0);
+//        launcher.setPower(0);
+//
+//        // Set all motors to run without encoders.
+//        // May want to use RUN_USING_ENCODERS if encoders are installed.
+//        if(runWithEncoders){
+//            frontLeftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+//            frontRightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+//            backLeftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+//            backRightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+//        }
+//        else{
+//            frontLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+//            frontRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+//            backLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+//            backRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+//        }
 
 
         // Define and initialize ALL installed servos.

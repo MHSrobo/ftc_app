@@ -16,7 +16,7 @@ import org.firstinspires.ftc.robotcontroller.external.samples.madrobots.util.Log
  */
 @TeleOp(name = "AutoBlue", group = "Autons")
 @Disabled
-public class AutoBlueCorner extends LinearOpMode{
+public class AutoBlueMid extends LinearOpMode{
 
     /* Declare OpMode members. */
 
@@ -50,7 +50,7 @@ public class AutoBlueCorner extends LinearOpMode{
             robot.backLeftMotor.setPower(-1);
             robot.frontLeftMotor.setPower(-1);
             robot.backRightMotor.setPower(-1);
-            robot.frontRightMotor.setPower(-1);
+            robot.frontRightMotor.setPower(- 1);
 
 
 

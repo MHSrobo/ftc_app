@@ -15,15 +15,14 @@ public class EncodedMotor extends MadDevice {
     public EncodedMotor(RobotHardware robot, DcMotor motor) {
         super(robot);
         this.motor = motor;
-        motor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        motor.setPower(0.0);
     }
 
     public void drive(double power, int distance) {
-        motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        motor.setTargetPosition(distance);
         motor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        motor.setTargetPosition((3)*1440);
         motor.setPower(1);
+        while(motor.isBusy());
+        motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     }
 
     public void waitForFinish() {
